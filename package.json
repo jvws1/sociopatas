@@ -2,7 +2,7 @@
   "name": "discord-profile-showcase",
   "version": "1.0.0",
   "private": true,
-  "description": "Single-page Discord profile showcase with vanilla frontend and a small Node backend.",
+  "description": "Os Sociopatas, porra",
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",

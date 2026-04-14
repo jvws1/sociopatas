@@ -1012,7 +1012,7 @@ body::before {
 
   /* DESLIGA O VIDEO NO CELULAR */
   .background-video-shell {
-    display: none;
+    display: block;
   }
 
   .profiles-grid {
