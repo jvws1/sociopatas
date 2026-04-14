@@ -1,0 +1,22 @@
+{
+  "name": "discord-profile-showcase",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Single-page Discord profile showcase with vanilla frontend and a small Node backend.",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "node --watch server/server.js"
+  },
+  "engines": {
+    "node": ">=18.18.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.22.1",
+    "serverless-http": "^4.0.0"
+  },
+  "devDependencies": {
+    "netlify-cli": "^24.11.1"
+  }
+}

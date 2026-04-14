@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Discord Profile Showcase</title>
+    <meta
+      name="description"
+      content="Pagina unica de showcase para perfis do Discord, com frontend em HTML, CSS e JavaScript puro e backend seguro para a API oficial."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="background-video-shell" class="background-video-shell is-hidden" aria-hidden="true">
+      <video id="background-video" class="background-video" autoplay muted loop playsinline></video>
+      <div id="background-video-overlay" class="background-video-overlay"></div>
+    </div>
+
+    <div id="enter-overlay" class="enter-overlay is-hidden" aria-hidden="true">
+      <button id="enter-button" class="enter-button" type="button">
+        <span id="enter-title" class="enter-title">enter</span>
+        <span id="enter-subtitle" class="enter-subtitle">clique para entrar</span>
+      </button>
+    </div>
+
+    <div class="page-shell">
+      <div class="ambient ambient-one" aria-hidden="true"></div>
+      <div class="ambient ambient-two" aria-hidden="true"></div>
+      <div class="ambient ambient-three" aria-hidden="true"></div>
+
+      <main class="content">
+        <section
+          id="profiles-grid"
+          class="profiles-grid"
+          aria-live="polite"
+          aria-busy="true"
+        ></section>
+      </main>
+    </div>
+
+    <noscript>
+      <div class="noscript-banner">
+        Esta pagina precisa de JavaScript para renderizar os cards dinamicos.
+      </div>
+    </noscript>
+
+    <div id="music-dock" class="music-dock is-hidden" aria-live="polite">
+      <div class="music-control">
+        <button id="music-mute" class="music-icon-button" type="button" aria-label="Ativar ou desativar som">
+          <span id="music-mute-icon" class="music-mute-icon" aria-hidden="true"></span>
+        </button>
+        <input
+          id="music-volume"
+          class="music-volume"
+          type="range"
+          min="0"
+          max="100"
+          step="1"
+          value="55"
+          aria-label="Volume da musica"
+        />
+      </div>
+      <audio id="site-audio" preload="auto"></audio>
+    </div>
+
+    <script src="./script.js" defer></script>
+  </body>
+</html>
