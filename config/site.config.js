@@ -11,7 +11,7 @@ module.exports = {
       Example:
       src: "/media/background.mp4"
     */
-    src: "/media/videoplayback.mp4",
+    src: "/media/15439242_3840_2160_24fps.mp4",
     overlayOpacity: 0.48
   },
   music: {
