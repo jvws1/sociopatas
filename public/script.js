@@ -74,15 +74,36 @@ async function setupSiteChrome(site) {
 
 function setupBackgroundVideo(site) {
   const video = site?.backgroundVideo || {};
+  const isMobile = window.matchMedia("(max-width: 640px)").matches;
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   if (!video.enabled || !video.src) {
+    backgroundVideo.pause();
+    backgroundVideo.removeAttribute("src");
+    backgroundVideo.load();
     backgroundVideoShell.classList.add("is-hidden");
     return;
   }
 
-  backgroundVideo.src = normalizeMediaSrc(video.src);
+  let videoSrc = video.src;
+
+  // No celular, usa a versão mais leve em 720p
+  if (isMobile) {
+    videoSrc = "/media/15439239_1280_720_24fps.mp4";
+  }
+
+  // Se o usuário prefere menos movimento, ainda mantém o vídeo,
+  // mas você pode trocar por uma versão ainda mais leve se quiser.
+  if (prefersReducedMotion) {
+    videoSrc = isMobile
+      ? "/media/15439239_1280_720_24fps.mp4"
+      : video.src;
+  }
+
+  backgroundVideo.src = normalizeMediaSrc(videoSrc);
   backgroundVideo.load();
   backgroundVideoShell.classList.remove("is-hidden");
+
   backgroundVideoOverlay.style.setProperty(
     "--video-overlay-opacity",
     String(typeof video.overlayOpacity === "number" ? video.overlayOpacity : 0.48)

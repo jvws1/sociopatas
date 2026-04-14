@@ -996,149 +996,6 @@ body::before {
 
 @media (max-width: 640px) {
   .page-shell {
-    width: min(100% - 20px, 1240px);
-    padding: 18px 0 28px;
-  }
-
-  .content {
-    min-height: calc(100vh - 46px);
-    align-items: center;
-  }
-
-  .empty-state,
-  .error-state,
-  .noscript-banner {
-    padding: 22px;
-  }
-
-  .profiles-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .profile-body {
-    padding: 0 18px 20px;
-  }
-
-  .profile-card-surface--no-banner {
-    padding-top: 68px;
-  }
-
-  .profile-card--no-banner .identity-row {
-    margin-top: 0;
-  }
-
-  .identity-row {
-    margin-top: -50px;
-    margin-bottom: 14px;
-    min-height: 102px;
-    gap: 10px;
-  }
-
-  .avatar-wrap {
-    width: 102px;
-    height: 102px;
-  }
-
-  .presence-dot.discord-style {
-    width: 22px;
-    height: 22px;
-    border-width: 4px;
-    bottom: 2px;
-    right: 2px;
-  }
-
-  .profile-name {
-    font-size: 1.68rem;
-  }
-
-  .custom-status-bubble {
-    max-width: calc(100% - 112px);
-  }
-
-  .custom-status-content {
-    padding: 9px 13px;
-  }
-
-  .loading-avatar {
-    width: 102px;
-    height: 102px;
-    margin-left: 18px;
-    margin-top: -50px;
-  }
-
-  .loading-body {
-    padding: 0 18px 20px;
-  }
-
-  .music-dock {
-    top: 10px;
-    left: 10px;
-  }
-
-  .music-volume {
-    width: 84px;
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .music-dock:hover .music-volume,
-  .music-dock:focus-within .music-volume {
-    width: 84px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    animation: none !important;
-    transition: none !important;
-  }
-}
-
-/* Container do progresso */
-.spotify-progress-container {
-    margin-top: 12px;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: 10px;
-}
-
-/* Os números do tempo */
-.spotify-time {
-    font-family: 'Manrope', monospace;
-    font-size: 0.75rem;
-    color: var(--text-soft);
-    min-width: 35px;
-}
-
-/* Fundo da barra */
-.spotify-progress-bar {
-    height: 4px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 2px;
-    position: relative;
-    overflow: hidden;
-}
-
-/* O preenchimento branco que vai andar */
-.spotify-progress-fill {
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    background: #fff; /* O Discord usa branco puro na barra do Spotify */
-    width: 0%; /* Começa em 0 */
-    transition: width 0.1s linear;
-}
-
-@media (max-width: 640px) {
-  .page-shell {
     width: 100%;
     padding: 14px 0 24px;
     display: flex;
@@ -1149,9 +1006,15 @@ body::before {
     width: 100%;
     display: flex;
     justify-content: center;
+    min-height: auto;
+    align-items: flex-start;
   }
 
-  /* GRID CENTRALIZADO */
+  /* DESLIGA O VIDEO NO CELULAR */
+  .background-video-shell {
+    display: none;
+  }
+
   .profiles-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -1161,11 +1024,11 @@ body::before {
     width: 100%;
   }
 
-  /* CARD MENOR E CENTRALIZADO */
   .profile-card,
   .profile-card.is-loading {
     width: 100%;
-    max-width: 340px; /* 🔥 controla o tamanho do card */
+    max-width: 340px;
+    border-radius: 24px;
   }
 
   .empty-state,
@@ -1175,10 +1038,23 @@ body::before {
     max-width: 340px;
     margin: 0 auto;
     padding: 20px;
+    border-radius: 24px;
   }
 
   .profile-banner {
     height: 120px;
+  }
+
+  .profile-topline {
+    inset: 12px 12px auto;
+    gap: 8px;
+    justify-content: flex-start;
+  }
+
+  .profile-status {
+    padding: 7px 10px;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
   }
 
   .profile-body {
@@ -1188,10 +1064,18 @@ body::before {
     align-items: center;
   }
 
-  /* CENTRALIZA TUDO DO TOPO */
+  .profile-card-surface--no-banner {
+    padding-top: 58px;
+  }
+
+  .profile-card--no-banner .identity-row {
+    margin-top: 0;
+  }
+
   .identity-row {
     margin-top: -40px;
     margin-bottom: 12px;
+    min-height: auto;
     gap: 10px;
     flex-direction: column;
     align-items: center;
@@ -1203,19 +1087,24 @@ body::before {
     width: 84px;
     height: 84px;
     margin: 0 auto;
+    flex: 0 0 84px;
   }
 
   .avatar-shell {
     padding: 3px;
+    box-shadow:
+      0 16px 36px rgba(0, 0, 0, 0.32),
+      0 0 24px var(--accent-soft);
   }
 
   .presence-dot.discord-style {
     width: 18px;
     height: 18px;
     border-width: 3px;
+    bottom: 2px;
+    right: 2px;
   }
 
-  /* NOME CENTRALIZADO */
   .profile-name-row {
     display: flex;
     flex-direction: column;
@@ -1223,25 +1112,30 @@ body::before {
     justify-content: center;
     gap: 6px;
     width: 100%;
+    min-width: 0;
     text-align: center;
   }
 
   .profile-name {
+    width: 100%;
     font-size: 1.3rem;
+    line-height: 1;
     text-align: center;
+    word-break: break-word;
   }
 
   .profile-username {
+    width: 100%;
     font-size: 0.9rem;
     text-align: center;
   }
 
   .profile-nick {
+    width: 100%;
     font-size: 0.85rem;
     text-align: center;
   }
 
-  /* PRESENCE */
   .presence-block {
     width: 100%;
     align-items: center;
@@ -1249,46 +1143,6 @@ body::before {
     margin-top: 12px;
   }
 
-  .presence-card {
-    width: 100%;
-    padding: 12px;
-  }
-
-  .presence-card--spotify {
-    grid-template-columns: 50px 1fr;
-    gap: 10px;
-  }
-
-  .presence-art {
-    width: 50px;
-    height: 50px;
-  }
-
-  .presence-title {
-    font-size: 0.9rem;
-  }
-
-  .presence-subtitle {
-    font-size: 0.8rem;
-  }
-
-  /* PROGRESS BAR */
-  .spotify-progress-container {
-    margin-top: 8px;
-    gap: 6px;
-    grid-template-columns: 32px 1fr 32px;
-  }
-
-  .spotify-time {
-    font-size: 0.65rem;
-    text-align: center;
-  }
-
-  .spotify-progress-bar {
-    height: 4px;
-  }
-
-  /* STATUS PERSONALIZADO */
   .custom-status-bubble {
     margin: 0 auto;
     justify-content: center;
@@ -1296,7 +1150,9 @@ body::before {
   }
 
   .custom-status-content {
+    max-width: 100%;
     padding: 8px 12px;
+    gap: 6px;
   }
 
   .custom-status-text {
@@ -1304,17 +1160,86 @@ body::before {
     text-align: center;
   }
 
-  /* ICONES */
+  .presence-card {
+    width: 100%;
+    padding: 12px;
+    border-radius: 16px;
+    gap: 10px;
+  }
+
+  .presence-card--spotify {
+    grid-template-columns: 50px minmax(0, 1fr);
+    gap: 10px;
+    align-items: center;
+  }
+
+  .presence-art {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+  }
+
+  .presence-meta {
+    min-width: 0;
+    gap: 3px;
+  }
+
+  .presence-kicker {
+    font-size: 0.64rem;
+    letter-spacing: 0.1em;
+  }
+
+  .presence-title {
+    font-size: 0.9rem;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .presence-subtitle,
+  .presence-detail {
+    font-size: 0.8rem;
+    line-height: 1.35;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .spotify-progress-container {
+    margin-top: 8px;
+    gap: 6px;
+    grid-template-columns: 32px minmax(0, 1fr) 32px;
+  }
+
+  .spotify-time {
+    min-width: 32px;
+    font-size: 0.65rem;
+    text-align: center;
+  }
+
+  .spotify-progress-bar {
+    width: 100%;
+    height: 4px;
+    border-radius: 999px;
+  }
+
+  .spotify-progress-fill {
+    border-radius: inherit;
+  }
+
   .socials-row {
     justify-content: center;
     align-items: center;
     gap: 10px;
     margin-top: 16px;
+    width: 100%;
   }
 
   .social-link {
     width: 44px;
     height: 44px;
+    border-radius: 14px;
   }
 
   .social-link svg {
@@ -1322,7 +1247,10 @@ body::before {
     height: 28px;
   }
 
-  /* LOADING */
+  .loading-banner {
+    height: 140px;
+  }
+
   .loading-avatar {
     width: 84px;
     height: 84px;
@@ -1333,24 +1261,51 @@ body::before {
     padding: 0 16px 18px;
   }
 
-  /* MUSIC DOCK CENTRALIZADO EMBAIXO */
+  /* BOTAO DE SOM NO TOPO DIREITO, FORA DOS CARDS */
   .music-dock {
-    top: auto;
-    left: 50%;
-    bottom: 12px;
-    transform: translateX(-50%);
-    padding: 10px 12px;
-    max-width: calc(100vw - 20px);
+    top: 12px;
+    right: 12px;
+    left: auto;
+    bottom: auto;
+    transform: none;
+    z-index: 40;
+    padding: 8px;
+    max-width: none;
+    border-radius: 999px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02)),
+      rgba(10, 14, 22, 0.82);
+    backdrop-filter: blur(14px);
+  }
+
+  .music-control {
+    gap: 0;
   }
 
   .music-icon-button {
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
   }
 
+  .music-mute-icon,
+  .music-mute-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* ESCONDE O SLIDER NO CELULAR */
   .music-volume {
-    width: 70px;
-    opacity: 1;
-    pointer-events: auto;
+    display: none;
+  }
+
+  .music-dock:hover .music-volume,
+  .music-dock:focus-within .music-volume {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .background-video {
+    filter: none; /* remove peso de render */
   }
 }
