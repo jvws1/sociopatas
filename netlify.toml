@@ -1,7 +1,10 @@
 [build]
   publish = "public"
-  functions = "netlify/functions"
   command = "echo Building Netlify site"
+
+[functions]
+  directory = "netlify/functions"
+  included_files = ["config/**"]
 
 [[redirects]]
   from = "/api/*"
